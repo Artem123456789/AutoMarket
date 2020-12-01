@@ -1,0 +1,39 @@
+﻿@model AutoMarket.Models.Item
+
+@{
+    ViewData["Title"] = "Удалить";
+}
+
+<h1>Удалить</h1>
+
+<h3>Вы уверены что хотите удалить</h3>
+<div>
+    <h4>Деталь в заказе</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Деталь
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CarDetail.Name)
+        </dd class>
+        <dt class = "col-sm-2">
+            Количество
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt class = "col-sm-2">
+            Заказ
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Order.Name)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index">Удалить из списка</a>
+    </form>
+</div>

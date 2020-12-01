@@ -1,0 +1,33 @@
+﻿@model AutoMarket.ViewModels.OrderViewModel
+
+@{
+    ViewData["Title"] = "Добваить деталь";
+}
+
+<h1>Добавить деталь</h1>
+
+<h4>Заказ</h4>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddItem">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Order.Id" />
+            <div class="form-group">
+                <b>@Model.Order.Name</b>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemAdd.CarDetailId">Деталь</label>
+                <select asp-for="ItemAdd.CarDetailId" asp-items="@(new SelectList(ViewBag.Details, "Id", "DetailCar"))" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemAdd.Quantity">Количество</label>
+                <input asp-for="ItemAdd.Quantity" class="form-control" />
+                <span asp-validation-for="ItemAdd.Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

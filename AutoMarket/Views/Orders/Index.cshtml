@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AutoMarket.Models.Order>
+
+@{
+    ViewData["Title"] = "Заказы";
+}
+
+<h1>Заказы</h1>
+
+<p>
+    <a asp-action="Create">Создать</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Название
+            </th>
+            <th>
+                Создан
+            </th>
+            <th>
+                Выполнен
+            </th>
+            <th>
+                Цена
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedView)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletedView)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a> |
+                <a asp-action="SetCompleted" asp-route-id="@item.Id">Отметить выполненым</a> |
+                <a asp-action="AddItem" asp-route-id="@item.Id">Добавить деталь</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
